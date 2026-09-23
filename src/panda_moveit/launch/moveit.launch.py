@@ -6,25 +6,17 @@ from launch.actions import DeclareLaunchArgument
 from launch.substitutions import LaunchConfiguration
 from ament_index_python.packages import get_package_share_directory
 from launch.substitutions import PathJoinSubstitution, Command, FindExecutable
-
-
 def generate_launch_description():
-
-    # Arguments
     is_sim = LaunchConfiguration("is_sim")
     is_ignition = LaunchConfiguration("is_ignition")
-
     is_sim_arg = DeclareLaunchArgument(
         "is_sim", default_value="true",
         description="Use simulation time if true"
     )
-
     is_ignition_arg = DeclareLaunchArgument(
         "is_ignition", default_value="true",
         description="Use Ignition Gazebo if true"
     )
-
-    # Build MoveIt config
     moveit_config = (
         MoveItConfigsBuilder("panda", package_name="panda_moveit")
         .robot_description(
@@ -41,8 +33,6 @@ def generate_launch_description():
         .trajectory_execution(file_path="config/moveit_controllers.yaml")
         .to_moveit_configs()
     )
-
-    # Move Group Node
     move_group_node = Node(
         package="moveit_ros_move_group",
         executable="move_group",
@@ -54,14 +44,11 @@ def generate_launch_description():
         ],
         arguments=["--ros-args", "--log-level", "info"],
     )
-
-    # RViz
     rviz_config = os.path.join(
         get_package_share_directory("panda_moveit"),
         "rviz",
         "moveit.rviz",
     )
-
     rviz_node = Node(
         package="rviz2",
         executable="rviz2",
@@ -75,7 +62,6 @@ def generate_launch_description():
             moveit_config.joint_limits,
         ],
     )
-
     return LaunchDescription([
         is_sim_arg,
         is_ignition_arg,

@@ -13,8 +13,6 @@
       <background>0.7 0.7 0.7 1</background>
       <shadows>true</shadows>
     </scene>
-
-  <!-- ================= RED BOX ================= -->
   <model name="red_box">
     <static>false</static>
     <link name="red_link">
@@ -61,14 +59,12 @@
           </box>
         </geometry>
         <material>
-          <ambient>1 0 0 1</ambient>   <!-- Red -->
+          <ambient>1 0 0 1</ambient>   
           <diffuse>1 0 0 1</diffuse>
         </material>
       </visual>
     </link>
   </model>
-
-  <!-- ================= GREEN BOX ================= -->
   <model name="green_box">
     <static>false</static>
     <link name="green_link">
@@ -115,14 +111,12 @@
           </box>
         </geometry>
         <material>
-          <ambient>0 1 0 1</ambient>   <!-- Green -->
+          <ambient>0 1 0 1</ambient>   
           <diffuse>0 1 0 1</diffuse>
         </material>
       </visual>
     </link>
   </model>
-
-  <!-- ================= BLUE BOX ================= -->
   <model name="blue_box">
     <static>false</static>
     <link name="blue_link">
@@ -169,13 +163,12 @@
           </box>
         </geometry>
         <material>
-          <ambient>0 0 1 1</ambient>   <!-- Blue -->
+          <ambient>0 0 1 1</ambient>   
           <diffuse>0 0 1 1</diffuse>
         </material>
       </visual>
     </link>
   </model>
-
 	<model name='Trash_01_001'>
         <static>true</static>    
         <include>
@@ -183,7 +176,6 @@
         </include>
         <pose frame=''>0.6 -0.6 0.0 0 0 0</pose>
 	</model>
-
     <model name='CoffeeTable_1'>
       <static>true</static>
       <model name='aws_robomaker_residential_CoffeeTable_01'>

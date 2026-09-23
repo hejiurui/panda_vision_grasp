@@ -6,17 +6,12 @@ from launch_ros.parameter_descriptions import ParameterValue
 from launch.substitutions import Command, LaunchConfiguration
 from launch.conditions import UnlessCondition
 from ament_index_python.packages import get_package_share_directory
-
-
 def generate_launch_description():
-
     is_sim = LaunchConfiguration("is_sim")
-    
     is_sim_arg = DeclareLaunchArgument(
         "is_sim",
         default_value="True"
     )
-
     robot_description = ParameterValue(
         Command(
             [
@@ -27,22 +22,17 @@ def generate_launch_description():
                     "panda.urdf.xacro",
                 ),
                 " is_sim:=True",
-                " is_ignition:=True" # remember to make it according to the Gazebo version
+                " is_ignition:=True"
             ]
         ),
         value_type=str,
     )
-
     robot_state_publisher_node = Node(
         package="robot_state_publisher",
         executable="robot_state_publisher",
         parameters=[{"robot_description": robot_description,
                      "use_sim_time": is_sim}],
     )
-
-    # In simulation, gz_ros2_control already hosts controller_manager;
-    # a standalone ros2_control_node would try to load the Gazebo hardware
-    # plugin outside the simulator and abort.
     controller_manager = Node(
         package="controller_manager",
         executable="ros2_control_node",
@@ -57,7 +47,6 @@ def generate_launch_description():
             ),
         ],
     )
-
     joint_state_broadcaster_spawner = Node(
         package="controller_manager",
         executable="spawner",
@@ -67,19 +56,16 @@ def generate_launch_description():
             "/controller_manager",
         ],
     )
-
     arm_controller_spawner = Node(
         package="controller_manager",
         executable="spawner",
         arguments=["arm_controller", "--controller-manager", "/controller_manager"],
     )
-
     gripper_controller_spawner = Node(
         package="controller_manager",
         executable="spawner",
         arguments=["gripper_controller", "--controller-manager", "/controller_manager"],
     )
-
     return LaunchDescription(
         [
             is_sim_arg,

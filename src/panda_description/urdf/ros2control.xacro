@@ -1,19 +1,12 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="panda">
-
   <xacro:property name="PI" value="3.14159265359" />
-
   <ros2_control name="RobotSystem" type="system">
-    
-    <!-- ros2_control Gazebo -->
-    <!-- ROS 2 Humble -->
     <xacro:if value="$(arg is_ignition)">
       <hardware>
         <plugin>gz_ros2_control/GazeboSimSystem</plugin>
       </hardware>
     </xacro:if>
-
-    <!-- Joint 1 -->
     <joint name="panda_joint1">
       <command_interface name="position">
         <param name="min">-2.9671</param>
@@ -21,8 +14,6 @@
       </command_interface>
       <state_interface name="position"/>
     </joint>
-
-    <!-- Joint 2 -->
     <joint name="panda_joint2">
       <command_interface name="position">
         <param name="min">-1.8326</param>
@@ -30,8 +21,6 @@
       </command_interface>
       <state_interface name="position"/>
     </joint>
-
-    <!-- Joint 3 -->
     <joint name="panda_joint3">
       <command_interface name="position">
         <param name="min">-2.9671</param>
@@ -39,8 +28,6 @@
       </command_interface>
       <state_interface name="position"/>
     </joint>
-
-    <!-- Joint 4 -->
     <joint name="panda_joint4">
       <command_interface name="position">
         <param name="min">-3.1416</param>
@@ -48,8 +35,6 @@
       </command_interface>
       <state_interface name="position"/>
     </joint>
-
-    <!-- Joint 5 -->
     <joint name="panda_joint5">
       <command_interface name="position">
         <param name="min">-2.9671</param>
@@ -57,8 +42,6 @@
       </command_interface>
       <state_interface name="position"/>
     </joint>
-
-    <!-- Joint 6 -->
     <joint name="panda_joint6">
       <command_interface name="position">
         <param name="min">-0.0873</param>
@@ -66,8 +49,6 @@
       </command_interface>
       <state_interface name="position"/>
     </joint>
-
-    <!-- Joint 7 -->
     <joint name="panda_joint7">
       <command_interface name="position">
         <param name="min">-2.9671</param>
@@ -75,8 +56,6 @@
       </command_interface>
       <state_interface name="position"/>
     </joint>
-
-    <!-- Gripper Finger Joint 1 -->
     <joint name="panda_finger_joint1">
       <command_interface name="position">
         <param name="min">0.0</param>
@@ -84,8 +63,6 @@
       </command_interface>
       <state_interface name="position"/>
     </joint>
-
-    <!-- Gripper Finger Joint 2 (Mimics Joint 1) -->
     <joint name="panda_finger_joint2">
       <command_interface name="position">
         <param name="min">0.0</param>
@@ -93,7 +70,5 @@
       </command_interface>
       <state_interface name="position"/>
     </joint>
-
   </ros2_control>
-
 </robot>
