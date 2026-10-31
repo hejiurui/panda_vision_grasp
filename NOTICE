@@ -1,0 +1,55 @@
+NOTICE
+
+panda_vision_grasp
+Copyright 2026 何九瑞 <qwert123456qwe2022@163.com>
+
+This product includes the third-party assets listed below. They are NOT covered
+by this project's Apache-2.0 LICENSE; each remains under its own upstream terms.
+All copyrights belong to their respective owners.
+
+
+1. Franka Emika Panda robot meshes
+   Path:    src/panda_description/meshes/visual/*.dae
+            src/panda_description/meshes/collision/*.obj
+   Files:   11 visual meshes + 11 collision meshes (~16 MB)
+   Origin:  franka_description, official Franka Emika robot models
+            https://github.com/frankarobotics/franka_description
+   License: Apache License 2.0
+   Note:    DAE files carry Blender 2.79 exporter headers (2018-02-22); OBJ files
+            were converted with Open Asset Import Library (assimp). Used unmodified
+            as URDF visual and collision geometry.
+
+
+2. AWS RoboMaker residential furniture models
+   Path:    src/panda_description/models/aws_robomaker_residential_CoffeeTable_01/
+            src/panda_description/models/aws_robomaker_residential_Trash_01/
+   Files:   Model SDF, visual/collision DAE meshes and textures (~1.2 MB)
+   Origin:  AWS RoboMaker small house world assets
+            https://github.com/aws-robotics/aws-robomaker-small-house-world
+   License: MIT-0 (MIT No Attribution)
+            Copyright 2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+   Note:    Referenced by src/panda_description/worlds/empty.world, i.e. they are
+            functional dependencies of the simulation scene, not decorative extras.
+
+
+3. Camera enclosure mesh
+   Path:    src/panda_description/meshes/visual/camera.stl
+   Note:    Simple box-shaped camera body used as the camera link geometry.
+
+
+Scope of this project's Apache-2.0 license
+-------------------------------------------
+The Apache-2.0 LICENSE in this repository applies to the source code authored for
+this project:
+
+    src/panda_vision_cpp/          vision node (OpenCV HSV color detection)
+    src/panda_pick_place_cpp/      pick-and-place state machine (MoveIt 2)
+    src/panda_vision_msgs/         custom message definitions
+    src/panda_moveit/              MoveIt 2 configuration and launch files
+    src/panda_controller/          ros2_control configuration and launch files
+    src/panda_description/urdf/    robot description (xacro)
+    src/panda_description/worlds/  Gazebo world definition
+    src/panda_description/launch/  Gazebo bringup
+    src/panda_bringup/             top-level launch entry point
+
+The third-party assets in sections 1-2 above are excluded from that grant.
